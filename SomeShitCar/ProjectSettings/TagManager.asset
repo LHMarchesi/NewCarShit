@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Road
+  - Obstacle
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -12,14 +15,14 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - PlayerProjectile
+  - EnemyProjectile
+  - TriggersForPlayer
+  - TriggersForObstacle
+  - Obstacles
+  - Player
+  - DefaultProjectile
   - 
   - 
   - 
