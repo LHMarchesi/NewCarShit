@@ -223,9 +223,6 @@ MonoBehaviour:
   spawnPositions:
   - {fileID: 1474050572}
   canSpawn: 1
-  spawnRate: 0
-  setSpeed: 1
-  speed: 2
   randomSprites: 0
   sprites: []
   poolSize: 4
@@ -415,10 +412,7 @@ MonoBehaviour:
   - {fileID: 485283201}
   - {fileID: 741837743}
   - {fileID: 1369720156}
-  canSpawn: 0
-  spawnRate: 5
-  setSpeed: 1
-  speed: 3
+  canSpawn: 1
   randomSprites: 1
   sprites:
   - {fileID: -2095273860, guid: 3639acfc228afb743aaacfa259a99bf0, type: 3}
@@ -1726,6 +1720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2371d65894bb4d54f94432781d643998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 700
 --- !u!1 &658173274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1773,7 +1768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roadParts:
   - {fileID: 6009838369856794339, guid: 91246f8cba4a6024f8563bf93f70a728, type: 3}
-  scrollSpeed: 5
+  scrollSpeed: 6
   offset: {x: 0, y: 23, z: 0}
 --- !u!1 &667323615
 GameObject:
@@ -2246,10 +2241,7 @@ MonoBehaviour:
   - {fileID: 387746101}
   - {fileID: 729679891}
   - {fileID: 2024977125}
-  canSpawn: 1
-  spawnRate: 0
-  setSpeed: 0
-  speed: 0
+  canSpawn: 0
   randomSprites: 1
   sprites:
   - {fileID: 441975819, guid: 3639acfc228afb743aaacfa259a99bf0, type: 3}
@@ -2903,11 +2895,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1257383330}
-  - component: {fileID: 1257383332}
   - component: {fileID: 1257383331}
+  - component: {fileID: 1257383332}
+  - component: {fileID: 1257383333}
   m_Layer: 11
   m_Name: DespawnTrigger
-  m_TagString: Untagged
+  m_TagString: DeSpawnTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2985,6 +2978,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.5694194, y: 0.35908127}
   m_EdgeRadius: 0
+--- !u!50 &1257383333
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257383329}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &1277474601
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ public class EnemyIA : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        enemyConfig = GetComponent<EnemyController>().enemyConfig;
+        enemyConfig = GetComponent<EnemyController>().Config;
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         mainCamera = Camera.main;
 

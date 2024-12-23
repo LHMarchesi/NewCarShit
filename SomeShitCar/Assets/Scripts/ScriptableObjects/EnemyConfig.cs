@@ -4,6 +4,7 @@ using UnityEngine;
 public class EnemyConfig : ScriptableObject
 {
     public float Health;
+    public float CollisionDamage;
     public float Armor;
     public float Speed;
     public float SpawnRatio;

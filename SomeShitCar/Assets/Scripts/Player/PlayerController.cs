@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private float Health;
     private Movement movement;
     private Health health;
 
@@ -11,6 +12,8 @@ public class PlayerController : MonoBehaviour
         health = GetComponent<Health>();
 
         health.OnDead += HandleDeath;
+
+        health.SetStartingHeal(Health);
     }
 
     // Update is called once per frame

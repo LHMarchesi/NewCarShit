@@ -26,12 +26,5 @@ public class RoadTrigger : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
-
-        if (collision.CompareTag("Obstacle"))
-        {
-            GameObject obj = collision.gameObject;
-            ObstacleSpawner obstacleSpawner = obj.GetComponentInParent<ObstacleSpawner>();
-            obstacleSpawner.ReturnToPool(obj);
-        }
     }
 }

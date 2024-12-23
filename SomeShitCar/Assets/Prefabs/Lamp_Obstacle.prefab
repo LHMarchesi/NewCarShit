@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 894633508615951314}
   - component: {fileID: -6831065373365653125}
   - component: {fileID: -5006241198539625098}
-  - component: {fileID: -1074535350846027366}
+  - component: {fileID: 4048301476829631501}
   m_Layer: 12
   m_Name: Lamp_Obstacle
   m_TagString: Obstacle
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a8673dca21bc124398a2b440aa15c07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-1074535350846027366
+--- !u!114 &4048301476829631501
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,8 +181,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 3958132973481699266}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d90ffd0d2e7cef440919fe56bce55fc8, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f7696d034a2db54ea301c01fc8b14f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 5352c19df1ea24945b19c69ae633c532, type: 2}
   isTrigger: 1
-  damage: 50

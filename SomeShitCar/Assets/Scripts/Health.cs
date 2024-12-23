@@ -10,11 +10,6 @@ public class Health : MonoBehaviour
     private float currentHealth;
     private Slider healthSlider;
 
-    private void OnEnable()
-    {
-       
-    }
-
     public void Heal(float healAmount)
     {
         currentHealth += healAmount;

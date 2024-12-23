@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ProjectileConfig", menuName = "Projectiles/Projectile Config")]
+[CreateAssetMenu(fileName = "ProjectileConfig", menuName = "Configs/Projectile")]
 public class ProjectileConfig : ScriptableObject
 {
     public float damage;
