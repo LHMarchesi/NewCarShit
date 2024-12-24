@@ -4,52 +4,69 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] Vector2 speed;
-   
+    [SerializeField] private float constantAceleration;
+    [SerializeField] public Transform joystickCircle;
+    [SerializeField] public Transform outerCircle;
+
     Rigidbody2D rb;
-    private float deltaY, deltaX;
-    private float deceleration = 0.1f;
+
+    private bool touchStart;
+    private Vector2 pointA;
+    private Vector2 pointB;
+
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); 
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void moveCharacter(Vector2 direction)
+    {
+        rb.MovePosition((Vector2)transform.position + direction * speed * Time.deltaTime);
+    }
+
+    private void Update()
+    {
+        HandleTouchMovement();
     }
 
     public void HandleTouchMovement()
     {
-        if (Input.touchCount > 0)
+        if (Input.GetMouseButtonDown(0))
         {
-            Touch touch = Input.GetTouch(0);
-            Vector2 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+            pointA = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
 
-            switch (touch.phase)
-            {
-                case TouchPhase.Began:
-                    deltaX = touchPos.x - transform.position.x;
-                    deltaY = touchPos.y - transform.position.y;
-                    break;
-
-                case TouchPhase.Moved:
-                    Vector2 targetPos = new Vector2(touchPos.x - deltaX, touchPos.y - deltaY);
-                    Vector2 direction = targetPos - (Vector2)transform.position;
-                    rb.MovePosition((Vector2)transform.position + direction * speed * Time.deltaTime);
-                    break;
-
-                case TouchPhase.Ended:
-                    StartCoroutine(ApplyDeceleration());
-                    break;
-            }
+            joystickCircle.transform.position = pointA;
+            outerCircle.transform.position = pointA;
+            joystickCircle.GetComponent<SpriteRenderer>().enabled = true;
+            outerCircle.GetComponent<SpriteRenderer>().enabled = true;
+        }
+        if (Input.GetMouseButton(0))
+        {
+            touchStart = true;
+            pointB = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
+        }
+        else
+        {
+            touchStart = false;
         }
     }
 
-    private IEnumerator ApplyDeceleration()
+    private void FixedUpdate()
     {
-        while (rb.velocity.magnitude > 0.1f) 
+        if (touchStart)
         {
-            // Reducimos la velocidad con un factor de desaceleración
-            rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, deceleration * Time.deltaTime);
-            yield return null; 
+            Vector2 offset = pointB - pointA;
+            Vector2 direction = Vector2.ClampMagnitude(offset, 1.0f);
+            moveCharacter(direction);
+
+            joystickCircle.transform.position = new Vector2(pointA.x + direction.x, pointA.y + direction.y);
         }
-        // Asegura que la velocidad sea exactamente cero al final
-        rb.velocity = Vector2.zero;
+        else
+        {
+            rb.MovePosition((Vector2)transform.position + Vector2.up * constantAceleration * Time.deltaTime);
+            joystickCircle.GetComponent<SpriteRenderer>().enabled = false;
+            outerCircle.GetComponent<SpriteRenderer>().enabled = false;
+        }
     }
 }
