@@ -225,6 +225,7 @@ MonoBehaviour:
   canSpawn: 1
   randomSprites: 0
   sprites: []
+  startingSpawnRate: 0
   poolSize: 4
   initializeAsChild: 1
 --- !u!4 &113275325
@@ -440,6 +441,7 @@ MonoBehaviour:
   - {fileID: -1646685876, guid: 3639acfc228afb743aaacfa259a99bf0, type: 3}
   - {fileID: -781049309, guid: 3639acfc228afb743aaacfa259a99bf0, type: 3}
   - {fileID: -1941076138, guid: 3639acfc228afb743aaacfa259a99bf0, type: 3}
+  startingSpawnRate: 7
   poolSize: 10
   initializeAsChild: 1
 --- !u!4 &214483334
@@ -2241,12 +2243,13 @@ MonoBehaviour:
   - {fileID: 387746101}
   - {fileID: 729679891}
   - {fileID: 2024977125}
-  canSpawn: 0
+  canSpawn: 1
   randomSprites: 1
   sprites:
   - {fileID: 441975819, guid: 3639acfc228afb743aaacfa259a99bf0, type: 3}
   - {fileID: -1646685876, guid: 3639acfc228afb743aaacfa259a99bf0, type: 3}
   - {fileID: -510175682, guid: 3639acfc228afb743aaacfa259a99bf0, type: 3}
+  startingSpawnRate: 25
   poolSize: 5
   initializeAsChild: 0
 --- !u!4 &801890096
@@ -4833,6 +4836,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3304971917512432842, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1646685876, guid: 3639acfc228afb743aaacfa259a99bf0, type: 3}
     - target: {fileID: 3748184862445003573, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

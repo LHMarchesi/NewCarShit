@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d6e1946b8bf3734e8be8a1108a25607, type: 3}
   m_Name: UziProjectile
   m_EditorClassIdentifier: 
-  damage: 45
+  damage: 50
   speed: 5
   lifeTime: 3

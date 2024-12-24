@@ -9,11 +9,11 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private bool canSpawn;
     [SerializeField] private bool randomSprites;
     [SerializeField] private Sprite[] sprites;
+    [SerializeField] private float startingSpawnRate;
     [SerializeField] private int poolSize;
     [SerializeField] private bool initializeAsChild;
 
     private Queue<GameObject> obstaclePool = new Queue<GameObject>();
-    private float currentSpawnRatio;
     private float timeSinceLastSpawn = 0;
 
 
@@ -24,7 +24,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     void Update()
     {
-        if (canSpawn && timeSinceLastSpawn >= currentSpawnRatio)
+        if (canSpawn && timeSinceLastSpawn >= startingSpawnRate)
         {
             SpawnObstacle();
             timeSinceLastSpawn = 0;
@@ -61,7 +61,7 @@ public class ObstacleSpawner : MonoBehaviour
 
             ObstacleMovement obstacleMovement = obj.GetComponent<ObstacleMovement>();
             obstacleMovement.SetSpeed(obstacleController.Config.Speed); // Set Speed from config
-            currentSpawnRatio = obstacleController.Config.SpawnRatio; // Set SpawnRatio from config
+            startingSpawnRate = obstacleController.Config.SpawnRatio; // Set SpawnRatio from config
         }
 
         if (obj.CompareTag("Enemy")) 
@@ -70,7 +70,7 @@ public class ObstacleSpawner : MonoBehaviour
             if (enemyController != null)
             {
                 enemyController.SetSpawner(this);
-                currentSpawnRatio = enemyController.Config.SpawnRatio;
+                startingSpawnRate = enemyController.Config.SpawnRatio;
             }
         }
 
@@ -82,7 +82,6 @@ public class ObstacleSpawner : MonoBehaviour
 
     public void ReturnToPool(GameObject obj)
     {
-        Debug.Log($"Returning {obj.name} to pool.");
         obj.SetActive(false);
         obstaclePool.Enqueue(obj);
     }

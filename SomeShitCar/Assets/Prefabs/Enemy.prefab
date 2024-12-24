@@ -528,11 +528,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08b84b6fbcbded447a865e28ec937153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayLength: -3
-  laneChangeDistance: 1.3
-  obstacleLayer:
+  rayLength: -1.3
+  laneChangeDistance: 0.7
+  MaxSpeed: 2
+  MinSpeed: 1
+  ObstacleLayer:
     serializedVersion: 2
     m_Bits: 4096
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &7789402711320359277
 MonoBehaviour:
   m_ObjectHideFlags: 0

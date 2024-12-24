@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b767404c6ec754a8033f672cedf7c0, type: 3}
   m_Name: EnemyConfig
   m_EditorClassIdentifier: 
-  Health: 600
+  Health: 400
   CollisionDamage: 100
   Armor: 100
   Speed: 3
-  SpawnRatio: 15
+  SpawnRatio: 25

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Car
   m_EditorClassIdentifier: 
   Damage: 100
-  Speed: 6
+  Speed: 4
   SpawnRatio: 0.7

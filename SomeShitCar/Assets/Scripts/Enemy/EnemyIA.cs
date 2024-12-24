@@ -1,20 +1,24 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Transform = UnityEngine.Transform;
 
 public class EnemyIA : MonoBehaviour
 {
     [Header("Obstacle Avoidance")]
     [SerializeField] private float rayLength;
     [SerializeField] private float laneChangeDistance;
-    [SerializeField] private LayerMask obstacleLayer;
-
-    private float baseSpeed;
-    private EnemyConfig enemyConfig;
-    private Transform player;
-    private Rigidbody2D rb;
-    private bool isChangingLane;
+  
     private Camera mainCamera;
+    private Transform player;
+    private EnemyConfig enemyConfig;
+    private Rigidbody2D rb;
+    private float baseSpeed;
+    [SerializeField] private float MaxSpeed;
+    [SerializeField] private float MinSpeed;
+    private bool isChangingLane;
+
+    [SerializeField] private LayerMask ObstacleLayer;
+    [SerializeField] private LayerMask EnemyLayer;
 
     void Start()
     {
@@ -22,8 +26,6 @@ public class EnemyIA : MonoBehaviour
         enemyConfig = GetComponent<EnemyController>().Config;
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         mainCamera = Camera.main;
-
-        baseSpeed = enemyConfig.Speed;
     }
 
     void Update()
@@ -36,6 +38,7 @@ public class EnemyIA : MonoBehaviour
     private void MoveForward()
     {
         rb.velocity = new Vector2(0, baseSpeed);
+        AdjustToLimits();
     }
 
     private void AdjustSpeed()
@@ -45,32 +48,24 @@ public class EnemyIA : MonoBehaviour
         // Calcula la distancia vertical con el jugador
         float distanceToPlayer = transform.position.y - player.position.y;
 
-        float maxYDistance = 3f;
+        float maxYDistance = 2f;
         float minYDistance = -1f;
-
-       //assings Base Speed Fo
-        float minSpeed = baseSpeed - 1;
-        float maxSpeed = baseSpeed + 2;
-
-        float targetSpeed = rb.velocity.y;
 
         // Ajusta la velocidad según la distancia con el jugador
         if (distanceToPlayer > maxYDistance)
         {
-            targetSpeed = Mathf.MoveTowards(targetSpeed, maxSpeed, Time.deltaTime * 5f);
-            Debug.Log("Se pasó");
+            baseSpeed = Mathf.Lerp(baseSpeed, MinSpeed, Time.deltaTime * 2);
         }
         else if (distanceToPlayer < minYDistance)
         {
-            targetSpeed = Mathf.MoveTowards(targetSpeed, minSpeed, Time.deltaTime * 5f); // Mover hacia arriba
-            Debug.Log("Está atrás");
+            baseSpeed = Mathf.Lerp(baseSpeed, MaxSpeed, Time.deltaTime / 2);
         }
         else
         {
-            targetSpeed = Mathf.MoveTowards(targetSpeed, 0, Time.deltaTime * 3f); // Detenerse suavemente
+            baseSpeed = enemyConfig.Speed;
         }
-        Debug.Log(targetSpeed);
-        rb.velocity = new Vector2(rb.velocity.x, targetSpeed);
+       
+        rb.velocity = new Vector2(rb.velocity.x, baseSpeed);
     }
 
     private void CheckForObstacles()
@@ -78,11 +73,18 @@ public class EnemyIA : MonoBehaviour
         if (isChangingLane) return;
 
         // Raycast hacia adelante para detectar obstáculos
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, rayLength, obstacleLayer);
+        Vector3 rayStartPos = transform.position + new Vector3(0, 1, 0);
+
+        RaycastHit2D hit = Physics2D.Raycast(rayStartPos, Vector2.down, rayLength);
+
+        Debug.DrawRay(rayStartPos, Vector2.down * rayLength, Color.red);
 
         if (hit.collider != null && !isChangingLane)
         {
-            StartCoroutine(ChangeLane());
+            if (hit.collider.CompareTag("Enemy") || hit.collider.CompareTag("Player") || hit.collider.CompareTag("Obstacle"))
+            {
+                StartCoroutine(ChangeLane());
+            }
         }
     }
 
@@ -100,7 +102,6 @@ public class EnemyIA : MonoBehaviour
         float screenLeftLimit = mainCamera.ScreenToWorldPoint(Vector3.zero).x + 0.5f;
         float screenRightLimit = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x - 0.5f;
 
-
         if (targetPosition.x < screenLeftLimit || targetPosition.x > screenRightLimit)
         {
             isChangingLane = false;
@@ -109,7 +110,7 @@ public class EnemyIA : MonoBehaviour
 
         // Realizar el cambio de carril suavemente
         float elapsedTime = 0f;
-        float duration = 0.5f;
+        float duration = 0.3f;
 
         Vector2 startPosition = rb.position;
 
@@ -122,16 +123,24 @@ public class EnemyIA : MonoBehaviour
 
         rb.position = targetPosition;
 
-        yield return new WaitForSeconds(1f); // Cooldown 
+        yield return new WaitForSeconds(.3f); // Cooldown 
 
         isChangingLane = false;
     }
 
-    private void OnDrawGizmos()
+    private void AdjustToLimits()
     {
-        // Dibujar el raycast
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * rayLength);
+        float screenTopLimit = mainCamera.ScreenToWorldPoint(new Vector3(0, Screen.height, 0)).y;
+
+        if (transform.position.y > screenTopLimit - 4f) 
+        {
+            baseSpeed = Mathf.Lerp(baseSpeed, -MaxSpeed, Time.deltaTime * 2);
+            if (transform.position.y > screenTopLimit)
+            {
+                transform.position = new Vector3(transform.position.x, screenTopLimit, transform.position.z);
+                baseSpeed = 0f;
+            }
+        }
     }
 }
 
