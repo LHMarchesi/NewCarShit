@@ -60,8 +60,8 @@ public class ObstacleSpawner : MonoBehaviour
             obstacleController.SetSpawner(this); // Set spawner dependency
 
             ObstacleMovement obstacleMovement = obj.GetComponent<ObstacleMovement>();
-            obstacleMovement.SetSpeed(obstacleController.Config.Speed); // Set Speed from config
-            startingSpawnRate = obstacleController.Config.SpawnRatio; // Set SpawnRatio from config
+            obstacleMovement.SetSpeed(obstacleController.Config.Speed * DifficultyManager.Instance.GetObstacleSpeedMultiplier()); // Set Speed from config
+            startingSpawnRate = obstacleController.Config.SpawnRatio / DifficultyManager.Instance.GetObstacleSpawnMultiplier(); // Set SpawnRatio from config
         }
 
         if (obj.CompareTag("Enemy")) 
@@ -70,7 +70,7 @@ public class ObstacleSpawner : MonoBehaviour
             if (enemyController != null)
             {
                 enemyController.SetSpawner(this);
-                startingSpawnRate = enemyController.Config.SpawnRatio;
+                startingSpawnRate = enemyController.Config.SpawnRatio / DifficultyManager.Instance.GetEnemySpawnRateMultiplier();
             }
         }
 
