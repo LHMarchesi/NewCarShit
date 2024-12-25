@@ -5,8 +5,8 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] Vector2 speed;
     [SerializeField] private float constantAceleration;
-    [SerializeField] public Transform joystickCircle;
-    [SerializeField] public Transform outerCircle;
+    [SerializeField] public SpriteRenderer joystickCircle;
+    [SerializeField] public SpriteRenderer outerCircle;
 
     Rigidbody2D rb;
 
@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        pointA = joystickCircle.transform.position;
     }
 
     void moveCharacter(Vector2 direction)
@@ -32,23 +33,26 @@ public class Movement : MonoBehaviour
 
     public void HandleTouchMovement()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            pointA = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
-
-            joystickCircle.transform.position = pointA;
-            outerCircle.transform.position = pointA;
-            joystickCircle.GetComponent<SpriteRenderer>().enabled = true;
-            outerCircle.GetComponent<SpriteRenderer>().enabled = true;
-        }
         if (Input.GetMouseButton(0))
         {
             touchStart = true;
+
+            Color color = joystickCircle.color; // set the opacity
+            color.a = 1f;
+            joystickCircle.color = color;
+            outerCircle.color = color;
+
             pointB = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
         }
         else
         {
             touchStart = false;
+            joystickCircle.transform.position = pointA;
+
+            Color color = joystickCircle.color; // set the opacity of the cursor
+            color.a = .55f;
+            joystickCircle.color = color;
+            outerCircle.color = color;
         }
     }
 
@@ -65,8 +69,6 @@ public class Movement : MonoBehaviour
         else
         {
             rb.MovePosition((Vector2)transform.position + Vector2.up * constantAceleration * Time.deltaTime);
-            joystickCircle.GetComponent<SpriteRenderer>().enabled = false;
-            outerCircle.GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 }
