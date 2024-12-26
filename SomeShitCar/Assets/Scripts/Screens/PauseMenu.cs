@@ -23,12 +23,8 @@ public class PauseMenu : MonoBehaviour
         Button mainMenuButton = pauseCanvas.transform.Find("MainMenu").GetComponent<Button>();
         Button quitButton = pauseCanvas.transform.Find("Quit").GetComponent<Button>();
 
-        mainMenuButton.onClick.RemoveAllListeners(); // Limpiar listeners anteriores
-        resumeButton.onClick.RemoveAllListeners();
-        quitButton.onClick.RemoveAllListeners();
-
         resumeButton.onClick.AddListener(ResumeGame);
-        mainMenuButton.onClick.AddListener(GameManager.Instance.SetMenuState);
+        mainMenuButton.onClick.AddListener(SceneLoadManger.Instance.LoadMainMenu);
         quitButton.onClick.AddListener(GameManager.Instance.Quit);
 
         Time.timeScale = 0f;
@@ -37,7 +33,9 @@ public class PauseMenu : MonoBehaviour
     private void ResumeGame()
     {
         pauseCanvas.SetActive(false);
-        GameManager.Instance.SetGameState(GameStates.Game);
         Time.timeScale = 1f;
+        GameManager.Instance.SetGameState(GameStates.Game);
     }
+
+    
 }

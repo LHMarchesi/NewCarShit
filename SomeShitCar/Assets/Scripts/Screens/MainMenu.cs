@@ -7,12 +7,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button quitButton;
     void Start()
     {
-        startButton.onClick.AddListener(PressStart);
+        startButton.onClick.AddListener(SceneLoadManger.Instance.LoadGame);
         quitButton.onClick.AddListener(GameManager.Instance.Quit);
-    }
-
-    private void PressStart()
-    {
-        GameManager.Instance.SetGameState(GameManager.GameStates.Game);
     }
 }
