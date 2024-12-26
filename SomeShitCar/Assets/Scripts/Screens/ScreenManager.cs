@@ -33,7 +33,7 @@ public class ScreenManager : MonoBehaviour
         quitButton.onClick.RemoveAllListeners();
 
         retryButton.onClick.AddListener(GameManager.Instance.Retry);
-        mainMenuButton.onClick.AddListener(GameManager.Instance.SetMenuState);
+        mainMenuButton.onClick.AddListener(SceneLoadManger.Instance.LoadMainMenu);
         quitButton.onClick.AddListener(GameManager.Instance.Quit);
 
         Time.timeScale = 0f;
@@ -52,7 +52,7 @@ public class ScreenManager : MonoBehaviour
         quitButton.onClick.RemoveAllListeners();
 
         retryButton.onClick.AddListener(GameManager.Instance.Retry);
-        mainMenuButton.onClick.AddListener(GameManager.Instance.SetMenuState);
+        mainMenuButton.onClick.AddListener(SceneLoadManger.Instance.LoadMainMenu);
         quitButton.onClick.AddListener(GameManager.Instance.Quit);
 
         Time.timeScale = 0f;

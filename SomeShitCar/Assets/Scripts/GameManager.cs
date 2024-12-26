@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     }
     public void SetMenuState()
     {
+        SceneLoadManger.Instance.LoadSceneByName("MainMenu");
         SetGameState(GameStates.MainMenu);
     }
 
@@ -61,10 +62,10 @@ public class GameManager : MonoBehaviour
         switch (currentState)
         {
             case GameStates.MainMenu:
-                LoadSceneByName("MainMenu");
+                
                 break;
             case GameStates.Game:
-                LoadSceneByName("Game"); // have to fix, when try to resume it reloads
+
                 break;
             case GameStates.Pause:
                
@@ -78,10 +79,5 @@ public class GameManager : MonoBehaviour
             default:
                 break;
         }
-    }
-
-    private void LoadSceneByName(string name)
-    {
-        SceneManager.LoadScene(name);
     }
 }
