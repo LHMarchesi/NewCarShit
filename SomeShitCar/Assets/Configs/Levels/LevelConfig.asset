@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 90
   playerSpeedMultiplier: 0.5
-  obstacleSpeedMultiplier: 0.5
+  obstacleSpeedMultiplier: 0.7
   enemySpawnMultiplier: 1
-  obstacleSpawnMultiplier: 1
+  obstacleSpawnMultiplier: 0.8
   startAnimation: {fileID: 0}

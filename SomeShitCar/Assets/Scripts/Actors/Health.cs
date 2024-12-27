@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
     private float startingHealth;
-    public event Action OnDead;
+    public static event Action OnDead;
+    public static event Action OnTakeDamage;
 
     private float currentHealth;
     private Slider healthSlider;
@@ -13,15 +14,15 @@ public class Health : MonoBehaviour
     public void Heal(float healAmount)
     {
         currentHealth += healAmount;
-        if (currentHealth > startingHealth)
-        {
-            currentHealth = startingHealth; // Limitar a la salud máxima
-        }
         healthSlider.value = currentHealth;
+
+        if (currentHealth > startingHealth)
+            currentHealth = startingHealth;
     }
 
     public void TakeDamage(float damage)
     {
+        OnTakeDamage.Invoke();
         currentHealth -= damage;
         healthSlider.value = currentHealth;
 

@@ -2,20 +2,25 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float Health;
+    [SerializeField] private float startingHealth;
     private Health health;
 
     void OnEnable()
     {
         health = GetComponent<Health>();
 
-        health.OnDead += HandleDeath;
+        Health.OnDead += HandleDeath;
 
-        health.SetStartingHeal(Health);
+        health.SetStartingHeal(startingHealth);
     }
     private void HandleDeath()
     {
         GameManager.Instance.SetGameState(GameManager.GameStates.Lose);
         gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        Health.OnDead -= HandleDeath;
     }
 }

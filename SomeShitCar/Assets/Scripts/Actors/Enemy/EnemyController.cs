@@ -11,14 +11,9 @@ public class EnemyController : MonoBehaviour
 
     void OnEnable()
     {
+        Health.OnDead += HandleDeath;
         health = GetComponent<Health>();
-        health.OnDead += HandleDeath;
         health.SetStartingHeal(config.Health);
-    }
-
-    void OnDisable()
-    {
-        health.OnDead -= HandleDeath;
     }
 
     public void SetSpawner(ObstacleSpawner spawner)
@@ -29,9 +24,7 @@ public class EnemyController : MonoBehaviour
     private void HandleDeath()
     {
         if (spawner != null)
-        {
             spawner.ReturnToPool(gameObject);
-        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -44,6 +37,11 @@ public class EnemyController : MonoBehaviour
             // Si el obstáculo sale de la pantalla, regresarlo al pool
             spawner.ReturnToPool(this.gameObject);
         }
+    }
+
+    void OnDisable()
+    {
+        Health.OnDead -= HandleDeath;
     }
 
 }
