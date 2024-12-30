@@ -2532,7 +2532,7 @@ MonoBehaviour:
   - {fileID: 441975819, guid: 3639acfc228afb743aaacfa259a99bf0, type: 3}
   - {fileID: -1646685876, guid: 3639acfc228afb743aaacfa259a99bf0, type: 3}
   - {fileID: -510175682, guid: 3639acfc228afb743aaacfa259a99bf0, type: 3}
-  startingSpawnRate: 40
+  startingSpawnRate: 25
   poolSize: 5
   initializeAsChild: 0
 --- !u!4 &801890096

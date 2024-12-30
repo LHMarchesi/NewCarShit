@@ -7,11 +7,7 @@ public class CameraShake : MonoBehaviour
     public AnimationCurve curve;
     public float duration = 1f;
 
-    private void OnEnable()
-    {
-        Health.OnTakeDamage += Shake;
-    }
-    private void Shake()
+    public void Shake()
     {
         StartCoroutine(Shaking());
     }
@@ -21,7 +17,8 @@ public class CameraShake : MonoBehaviour
         Vector3 startPosition = transform.position;
         float elapsedTime = 0f;
 
-        while (elapsedTime < duration) {
+        while (elapsedTime < duration)
+        {
             elapsedTime += Time.deltaTime;
 
             float strength = curve.Evaluate(elapsedTime / duration);
@@ -30,10 +27,5 @@ public class CameraShake : MonoBehaviour
             yield return null;
         }
         transform.position = startPosition;
-    }
-
-    private void OnDisable()
-    {
-        Health.OnTakeDamage -= Shake;
     }
 }

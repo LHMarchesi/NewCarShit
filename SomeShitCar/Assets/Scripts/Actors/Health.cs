@@ -5,8 +5,8 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
     private float startingHealth;
-    public static event Action OnDead;
-    public static event Action OnTakeDamage;
+    public event Action OnDead;
+    public event Action OnTakeDamage;
 
     private float currentHealth;
     private Slider healthSlider;
@@ -22,13 +22,13 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        OnTakeDamage.Invoke();
+        OnTakeDamage?.Invoke();
         currentHealth -= damage;
         healthSlider.value = currentHealth;
 
         if (currentHealth <= 0)
         {
-            OnDead.Invoke();
+            OnDead?.Invoke();
         }
     }
     public float GetCurrentHealth()

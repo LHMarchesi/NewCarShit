@@ -4,12 +4,14 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float startingHealth;
     private Health health;
+    private CameraShake cameraShake;
 
     void OnEnable()
     {
         health = GetComponent<Health>();
-
-        Health.OnDead += HandleDeath;
+        cameraShake = Camera.main.GetComponent<CameraShake>();
+        health.OnDead += HandleDeath;
+        health.OnTakeDamage += cameraShake.Shake;
 
         health.SetStartingHeal(startingHealth);
     }
@@ -21,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable()
     {
-        Health.OnDead -= HandleDeath;
+        health.OnDead -= HandleDeath;
+        health.OnTakeDamage -= cameraShake.Shake;
     }
 }
