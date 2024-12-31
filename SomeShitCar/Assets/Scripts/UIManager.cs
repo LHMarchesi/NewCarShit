@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Slider progessionSlider;
     [SerializeField] private RawImage panel;
+
     private void Awake()
     {
         if (Instance == null)
@@ -37,4 +38,6 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(.25f);
         panel.gameObject.SetActive(false);
     }
+
+  
 }

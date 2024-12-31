@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -6,13 +7,17 @@ public class EnemyController : MonoBehaviour
     public EnemyConfig Config => config;
 
     private Health health;
+    private Animator animator;
     private ObstacleSpawner spawner;
 
 
     void OnEnable()
     {
         health = GetComponent<Health>();
+        animator = GetComponent<Animator>();
+
         health.OnDead += HandleDeath;
+        health.OnTakeDamage += DamageEffect;
         health.SetStartingHeal(config.Health);
     }
 
@@ -26,6 +31,12 @@ public class EnemyController : MonoBehaviour
         if (spawner != null)
             spawner.ReturnToPool(this.gameObject);
     }
+
+    private void DamageEffect()
+    {
+        animator.SetTrigger("Damage");
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
@@ -42,6 +53,7 @@ public class EnemyController : MonoBehaviour
     void OnDisable()
     {
         health.OnDead -= HandleDeath;
+        health.OnTakeDamage -= DamageEffect;
     }
 
 }

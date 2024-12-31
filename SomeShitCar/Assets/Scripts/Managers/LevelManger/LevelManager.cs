@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private LevelConfig levelConfig;
+    [SerializeField] private PopUpManager popUpManager;
 
     private float currentTime;
     private bool isLevelEnded;
@@ -37,11 +38,12 @@ public class LevelManager : MonoBehaviour
     {
         currentTime = 0;
         UIManager.Instance.SetSliderMaxValue(levelConfig.timer);
+        popUpManager.StartPopUps(levelConfig.timer);
 
         while (!isLevelEnded && currentTime < levelConfig.timer)
         {
             currentTime += Time.deltaTime;
-            float remainingTime = levelConfig.timer - currentTime;
+           // float remainingTime = levelConfig.timer - currentTime;
 
             UIManager.Instance.UpdateSliderUI(currentTime);
 
