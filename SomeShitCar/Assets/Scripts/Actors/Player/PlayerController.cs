@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
         cameraShake = Camera.main.GetComponent<CameraShake>();
         health.OnDead += HandleDeath;
         health.OnTakeDamage += cameraShake.Shake;
+        health.OnTakeDamage += DamageEffect;
 
         health.SetStartingHeal(startingHealth);
     }
@@ -19,6 +20,11 @@ public class PlayerController : MonoBehaviour
     {
         GameManager.Instance.SetGameState(GameManager.GameStates.Lose);
         gameObject.SetActive(false);
+    }
+
+    private void DamageEffect()
+    {
+        StartCoroutine(UIManager.Instance.StartPanelEffect(Color.red));
     }
 
     private void OnDisable()

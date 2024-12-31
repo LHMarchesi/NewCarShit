@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4089518137348424367}
   - component: {fileID: -6693950115455880534}
   - component: {fileID: 6074410803647226136}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: Car_Obstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -186,7 +186,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: e587325b90d75114e9f30fe54e2b1f3a, type: 2}
-  isTrigger: 1
 --- !u!61 &6074410803647226136
 BoxCollider2D:
   m_ObjectHideFlags: 0

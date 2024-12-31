@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private LevelConfig levelConfig;
-    [SerializeField] private Slider progessionSlider;
+
     private float currentTime;
     private bool isLevelEnded;
 
@@ -36,14 +36,14 @@ public class LevelManager : MonoBehaviour
     private IEnumerator StartLevel()
     {
         currentTime = 0;
-        progessionSlider.maxValue = levelConfig.timer;
+        UIManager.Instance.SetSliderMaxValue(levelConfig.timer);
 
         while (!isLevelEnded && currentTime < levelConfig.timer)
         {
             currentTime += Time.deltaTime;
             float remainingTime = levelConfig.timer - currentTime;
 
-            UpdateSliderUI(remainingTime);
+            UIManager.Instance.UpdateSliderUI(currentTime);
 
             yield return null;
         }
@@ -57,11 +57,6 @@ public class LevelManager : MonoBehaviour
                                                              levelConfig.obstacleSpeedMultiplier, 
                                                                 levelConfig.playerSpeedMultiplier
             );
-    }
-
-    private void UpdateSliderUI(float remainingTime)
-    {
-        progessionSlider.value = currentTime;
     }
 
     private void EndLevel()

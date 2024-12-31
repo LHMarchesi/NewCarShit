@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5749783633455821190}
   - component: {fileID: 3558922077646723532}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1400313391554850298}
   - component: {fileID: 5317357267300466287}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Square (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: -6831065373365653125}
   - component: {fileID: -5006241198539625098}
   - component: {fileID: 4048301476829631501}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: Lamp_Obstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1644032450257469571}
   - component: {fileID: 6883174050892076331}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Square (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,7 +451,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7625476788972330678}
   - component: {fileID: 6793273432231461637}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Square (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

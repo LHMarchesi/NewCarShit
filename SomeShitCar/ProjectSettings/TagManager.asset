@@ -21,10 +21,10 @@ TagManager:
   - EnemyProjectile
   - TriggersForPlayer
   - TriggersForObstacle
+  - LimitForPlayer
   - Obstacles
-  - Player
   - DefaultProjectile
-  - 
+  - Player
   - 
   - 
   - 

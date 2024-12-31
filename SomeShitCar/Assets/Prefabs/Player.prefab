@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7388446494670052869}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,7 +51,7 @@ GameObject:
   - component: {fileID: 6441261516501089490}
   - component: {fileID: 4771726765150004943}
   - component: {fileID: 7512650243602274372}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5623274162354595268}
   - component: {fileID: 170180667251402621}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 4368666369407702348}
   - component: {fileID: 8748904847571895532}
   - component: {fileID: 6185905667032967212}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 8736613724180279866}
   - component: {fileID: 169939197377247750}
   - component: {fileID: 4132090934644086652}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 3748184862445003573}
   - component: {fileID: 6230082615719971314}
   - component: {fileID: 8795697562217566824}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -589,9 +589,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 15113031301629241}
     m_Modifications:
+    - target: {fileID: 332011072248369907, guid: dfa59dae1534c1745b913451efbf62be, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1023452997179034115, guid: dfa59dae1534c1745b913451efbf62be, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2726054770345384001, guid: dfa59dae1534c1745b913451efbf62be, type: 3}
       propertyPath: m_Name
       value: Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726054770345384001, guid: dfa59dae1534c1745b913451efbf62be, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5431295697830116079, guid: dfa59dae1534c1745b913451efbf62be, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6419985656511760351, guid: dfa59dae1534c1745b913451efbf62be, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6419985656511760351, guid: dfa59dae1534c1745b913451efbf62be, type: 3}
       propertyPath: m_IsActive
@@ -604,6 +624,14 @@ PrefabInstance:
     - target: {fileID: 6699338673435042401, guid: dfa59dae1534c1745b913451efbf62be, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6718331478295565790, guid: dfa59dae1534c1745b913451efbf62be, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6735067811512795012, guid: dfa59dae1534c1745b913451efbf62be, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7095466256966898921, guid: dfa59dae1534c1745b913451efbf62be, type: 3}
       propertyPath: targetTag
@@ -656,6 +684,10 @@ PrefabInstance:
     - target: {fileID: 7107743636775556780, guid: dfa59dae1534c1745b913451efbf62be, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8205035051375854978, guid: dfa59dae1534c1745b913451efbf62be, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8350233380235166267, guid: dfa59dae1534c1745b913451efbf62be, type: 3}
       propertyPath: m_AnchorMax.x
