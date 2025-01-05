@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         health.OnDead += HandleDeath;
-        health.OnTakeDamage += DamageEffect;
+        health.OnTakeDamage += DamageTrigger;
         health.SetStartingHeal(config.Health);
     }
 
@@ -28,32 +28,32 @@ public class EnemyController : MonoBehaviour
 
     private void HandleDeath()
     {
+        AudioManager.Instance.PlaySfx(config.DestroySound);
+
         if (spawner != null)
             spawner.ReturnToPool(this.gameObject);
     }
 
-    private void DamageEffect()
+    private void DamageTrigger()
     {
+        AudioManager.Instance.PlaySfx(config.DamageSound);
         animator.SetTrigger("Damage");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        Health objHealth = collision.gameObject.GetComponent<Health>();
+        if (objHealth != null)
         {
-            collision.gameObject.GetComponent<Health>()?.TakeDamage(config.CollisionDamage);
-        }
-        else if (collision.collider.CompareTag("DeSpawnTrigger"))
-        {
-            // Si el obstáculo sale de la pantalla, regresarlo al pool
-            spawner.ReturnToPool(this.gameObject);
+            objHealth?.TakeDamage(config.CollisionDamage);
+
         }
     }
 
     void OnDisable()
     {
         health.OnDead -= HandleDeath;
-        health.OnTakeDamage -= DamageEffect;
+        health.OnTakeDamage -= DamageTrigger;
     }
 
 }

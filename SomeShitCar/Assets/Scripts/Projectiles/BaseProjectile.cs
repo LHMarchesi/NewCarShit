@@ -10,6 +10,7 @@ public abstract class BaseProjectile : MonoBehaviour
     protected virtual void OnEnable()
     {
         startPosition = transform.position;
+        AudioManager.Instance.PlaySfx(projectileConfig.shootSound);
     }
 
     protected virtual void Update()
@@ -25,7 +26,8 @@ public abstract class BaseProjectile : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.GetComponent<Health>()?.TakeDamage(projectileConfig.damage);
+        collision.GetComponent<Health>()?.TakeDamage(projectileConfig.Damage);
+
         BaseWeapon weapon = GetComponentInParent<BaseWeapon>();
         weapon.ReturnToPool(gameObject);
     }

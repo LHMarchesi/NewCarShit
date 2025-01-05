@@ -17,3 +17,17 @@ MonoBehaviour:
   Armor: 100
   Speed: 3
   SpawnRatio: 25
+  DamageSound:
+    Guid:
+      Data1: 1776518175
+      Data2: 1227620782
+      Data3: 462212278
+      Data4: -1100432259
+    Path: event:/Hits/OnEnemyHit
+  DestroySound:
+    Guid:
+      Data1: 1434734612
+      Data2: 1229487471
+      Data3: 1358394280
+      Data4: 121084375
+    Path: event:/Car/Car Explosion

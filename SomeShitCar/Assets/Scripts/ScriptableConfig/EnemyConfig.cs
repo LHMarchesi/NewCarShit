@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EnemyConfig", menuName = "Configs/Enemy")]
@@ -8,4 +9,6 @@ public class EnemyConfig : ScriptableObject
     public float Armor;
     public float Speed;
     public float SpawnRatio;
+    public EventReference DamageSound;
+   public EventReference DestroySound;
 }

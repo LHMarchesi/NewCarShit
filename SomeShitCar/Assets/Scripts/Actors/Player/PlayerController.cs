@@ -1,8 +1,10 @@
+using FMODUnity;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float startingHealth;
+    [SerializeField] private EventReference onHitSound;
     private Health health;
     private CameraShake cameraShake;
 
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     private void DamageEffect()
     {
+        AudioManager.Instance.PlaySfx(onHitSound);
         StartCoroutine(UIManager.Instance.StartPanelEffect(Color.red));
     }
 

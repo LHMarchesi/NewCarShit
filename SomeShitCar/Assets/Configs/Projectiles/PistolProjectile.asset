@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d6e1946b8bf3734e8be8a1108a25607, type: 3}
   m_Name: PistolProjectile
   m_EditorClassIdentifier: 
-  damage: 45
+  Damage: 75
   speed: 3
   lifeTime: 3
+  shootSound:
+    Guid:
+      Data1: -729731347
+      Data2: 1329246359
+      Data3: -621679217
+      Data4: 337969027
+    Path: event:/Weapons/Uzi

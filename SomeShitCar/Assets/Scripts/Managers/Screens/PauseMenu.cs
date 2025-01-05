@@ -1,11 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
-using static GameManager;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private Button pauseButton;
-    private GameObject pauseCanvas;
+    [SerializeField] private GameObject pauseCanvas;
 
     void Start()
     {
@@ -14,18 +13,16 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
-        GameManager.Instance.SetGameState(GameStates.Pause);
+        GameManager.Instance.SetGameState(GameManager.GameStates.Pause);
 
-        pauseCanvas = transform.GetChild(0).gameObject;
         pauseCanvas.SetActive(true);
 
-        Button resumeButton = pauseCanvas.transform.Find("ResumeButton").GetComponent<Button>();
-        Button mainMenuButton = pauseCanvas.transform.Find("MainMenu").GetComponent<Button>();
-        Button quitButton = pauseCanvas.transform.Find("Quit").GetComponent<Button>();
+        Button resumeButton = pauseCanvas.transform.Find("PausePanel/ResumeButton").GetComponent<Button>();
+
+        Button mainMenuButton = pauseCanvas.transform.Find("PausePanel/MainMenuButton").GetComponent<Button>();
 
         resumeButton.onClick.AddListener(ResumeGame);
         mainMenuButton.onClick.AddListener(SceneLoadManger.Instance.LoadMainMenu);
-        quitButton.onClick.AddListener(GameManager.Instance.Quit);
 
         Time.timeScale = 0f;
     }
@@ -34,8 +31,6 @@ public class PauseMenu : MonoBehaviour
     {
         pauseCanvas.SetActive(false);
         Time.timeScale = 1f;
-        GameManager.Instance.SetGameState(GameStates.Game);
+        GameManager.Instance.SetGameState(GameManager.GameStates.Game);
     }
-
-    
 }

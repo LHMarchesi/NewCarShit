@@ -19,9 +19,12 @@ public class ObstacleController : MonoBehaviour
 
     private void HandleCollision(GameObject collisionObject)
     {
-        if (collisionObject.CompareTag("Player"))
+        Health objHealth = collisionObject.GetComponent<Health>();
+        if (objHealth != null)
         {
-            collisionObject.GetComponent<Health>()?.TakeDamage(config.Damage);
+            objHealth?.TakeDamage(config.Damage);
+            AudioManager.Instance.PlaySfx(config.CrashSound);
+
         }
         else if (collisionObject.CompareTag("DeSpawnTrigger"))
         {

@@ -15,3 +15,10 @@ MonoBehaviour:
   Damage: 100
   Speed: 4
   SpawnRatio: 0.7
+  CrashSound:
+    Guid:
+      Data1: -1803060648
+      Data2: 1234345437
+      Data3: 1862798722
+      Data4: 418175066
+    Path: event:/Car/Crash
