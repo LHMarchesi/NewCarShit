@@ -10,7 +10,7 @@ public class EnemyIA : MonoBehaviour
   
     private Camera mainCamera;
     private Transform player;
-    private EnemyConfig enemyConfig;
+    private PoliceConfig enemyConfig;
     private Rigidbody2D rb;
     private float baseSpeed;
     [SerializeField] private float MaxSpeed;
@@ -23,7 +23,7 @@ public class EnemyIA : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        enemyConfig = GetComponent<EnemyController>().Config;
+        enemyConfig = GetComponent<PoliceController>().Config;
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         mainCamera = Camera.main;
     }

@@ -2693,6 +2693,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 596086892}
+  - component: {fileID: 596086893}
   m_Layer: 5
   m_Name: MusicVolume
   m_TagString: Untagged
@@ -2721,6 +2722,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -15}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &596086893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596086891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79828a7a602fc8c408ce6633f08c4b40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeType: 1
 --- !u!1 &621110743
 GameObject:
   m_ObjectHideFlags: 0
@@ -4076,12 +4090,10 @@ MonoBehaviour:
   - {fileID: 729679891}
   - {fileID: 2024977125}
   canSpawn: 1
-  randomSprites: 1
+  randomSprites: 0
   sprites:
   - {fileID: 441975819, guid: 3639acfc228afb743aaacfa259a99bf0, type: 3}
-  - {fileID: -1803980321, guid: 3639acfc228afb743aaacfa259a99bf0, type: 3}
-  - {fileID: -510175682, guid: 3639acfc228afb743aaacfa259a99bf0, type: 3}
-  startingSpawnRate: 6
+  startingSpawnRate: 5
   poolSize: 5
   initializeAsChild: 0
 --- !u!4 &801890096
@@ -5725,7 +5737,7 @@ GameObject:
   - component: {fileID: 1277474604}
   - component: {fileID: 1277474603}
   m_Layer: 5
-  m_Name: RetryButton
+  m_Name: NextButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6752,7 +6764,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!224 &1481869464
 RectTransform:
@@ -6918,6 +6930,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1542674765}
+  - component: {fileID: 1542674766}
   m_Layer: 5
   m_Name: MasterVolume
   m_TagString: Untagged
@@ -6946,6 +6959,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 240}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1542674766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542674764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79828a7a602fc8c408ce6633f08c4b40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeType: 0
 --- !u!1 &1563811433
 GameObject:
   m_ObjectHideFlags: 0
@@ -7440,6 +7466,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1638393664}
+  - component: {fileID: 1638393665}
   m_Layer: 5
   m_Name: SFXVolume
   m_TagString: Untagged
@@ -7468,6 +7495,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -281}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1638393665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638393663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79828a7a602fc8c408ce6633f08c4b40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeType: 3
 --- !u!1 &1648999762
 GameObject:
   m_ObjectHideFlags: 0
@@ -7525,7 +7565,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Retry
+  m_text: 'Next
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7711,9 +7753,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0569163c0ae9f9648a49ae6e3d82f931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterVolume: 0
-  musicVolume: 0
-  sfxVolume: 0
+  masterVolume: 1
+  musicVolume: 1
+  sfxVolume: 1
 --- !u!1 &1747778616
 GameObject:
   m_ObjectHideFlags: 0
@@ -7725,7 +7767,7 @@ GameObject:
   - component: {fileID: 1747778617}
   - component: {fileID: 1747778618}
   m_Layer: 5
-  m_Name: PopUp
+  m_Name: PopUps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8922,7 +8964,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!224 &2060404955
 RectTransform:
@@ -9086,6 +9128,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3304971917512432842, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7d8e899817e5a794f80c57c552327383, type: 3}
     - target: {fileID: 3748184862445003573, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -9097,6 +9143,10 @@ PrefabInstance:
     - target: {fileID: 5145256656251008493, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
       propertyPath: onHitSound.Path
       value: event:/Hits/OnPlayerHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145256656251008493, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
+      propertyPath: onDeadSound.Path
+      value: event:/Car/Car Explosion
       objectReference: {fileID: 0}
     - target: {fileID: 5145256656251008493, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
       propertyPath: onHitSound.Guid.Data1
@@ -9113,6 +9163,22 @@ PrefabInstance:
     - target: {fileID: 5145256656251008493, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
       propertyPath: onHitSound.Guid.Data4
       value: 1026185942
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145256656251008493, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
+      propertyPath: onDeadSound.Guid.Data1
+      value: 1434734612
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145256656251008493, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
+      propertyPath: onDeadSound.Guid.Data2
+      value: 1229487471
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145256656251008493, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
+      propertyPath: onDeadSound.Guid.Data3
+      value: 1358394280
+      objectReference: {fileID: 0}
+    - target: {fileID: 5145256656251008493, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
+      propertyPath: onDeadSound.Guid.Data4
+      value: 121084375
       objectReference: {fileID: 0}
     - target: {fileID: 7091349156979852869, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
       propertyPath: outerCircle

@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float startingHealth;
     [SerializeField] private EventReference onHitSound;
+    [SerializeField] private EventReference onDeadSound;
     private Health health;
     private CameraShake cameraShake;
 
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     }
     private void HandleDeath()
     {
+        AudioManager.Instance.PlaySfx(onDeadSound);
         GameManager.Instance.SetGameState(GameManager.GameStates.Lose);
         gameObject.SetActive(false);
     }

@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,10 +27,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        SetGameState(GameStates.MainMenu);
-    }
 
     public void SetGameState(GameStates newState)
     {
@@ -55,6 +50,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
+        SetGameState(GameStates.Game);
     }
 
     private void HandleStateChange()
@@ -62,18 +58,19 @@ public class GameManager : MonoBehaviour
         switch (currentState)
         {
             case GameStates.MainMenu:
-                
+                AudioManager.Instance.PauseAllAudio(false);
                 break;
             case GameStates.Game:
-
+                AudioManager.Instance.PauseAllAudio(false);
                 break;
             case GameStates.Pause:
-               
+                AudioManager.Instance.PauseAllAudio(true);
                 break;
             case GameStates.Lose:
                 OnLose?.Invoke();
                 break;
             case GameStates.Win:
+                AudioManager.Instance.PauseAllAudio(true);
                 OnWin?.Invoke();
                 break;
             default:

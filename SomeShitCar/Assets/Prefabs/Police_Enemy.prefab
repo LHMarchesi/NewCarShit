@@ -355,10 +355,10 @@ GameObject:
   - component: {fileID: 504889358160122324}
   - component: {fileID: 5762244217362561090}
   - component: {fileID: 1057011949814492724}
-  - component: {fileID: 7789402711320359277}
   - component: {fileID: 2721485984094522573}
+  - component: {fileID: 2637134513031180457}
   m_Layer: 7
-  m_Name: Enemy
+  m_Name: Police_Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -539,19 +539,6 @@ MonoBehaviour:
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 128
---- !u!114 &7789402711320359277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5341231938526656581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8339223535d312341a487a3f181f4211, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 3dcecbbf2d536cb4c8050d1f1d3e0670, type: 2}
 --- !u!95 &2721485984094522573
 Animator:
   serializedVersion: 5
@@ -573,6 +560,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2637134513031180457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341231938526656581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38cad552948224840aeb45acf79f6c63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 3dcecbbf2d536cb4c8050d1f1d3e0670, type: 2}
+  hasSpawned: 0
 --- !u!1 &8057243050333281618
 GameObject:
   m_ObjectHideFlags: 0

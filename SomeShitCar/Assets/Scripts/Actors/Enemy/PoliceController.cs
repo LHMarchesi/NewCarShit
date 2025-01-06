@@ -1,15 +1,21 @@
 using System.Collections;
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class PoliceController : MonoBehaviour
 {
-    [SerializeField] private EnemyConfig config;
-    public EnemyConfig Config => config;
+    [SerializeField] private PoliceConfig config;
+    public PoliceConfig Config => config;
 
     private Health health;
     private Animator animator;
     private ObstacleSpawner spawner;
 
+    private bool hasSpawned;
+    private bool isActive;
+
+    private EventInstance sirenInstance;
 
     void OnEnable()
     {
@@ -19,11 +25,37 @@ public class EnemyController : MonoBehaviour
         health.OnDead += HandleDeath;
         health.OnTakeDamage += DamageTrigger;
         health.SetStartingHeal(config.Health);
+
+        // Crear la instancia del sonido de la sirena
+        if (!string.IsNullOrEmpty(config.SirenSound.Path))
+        {
+            sirenInstance = RuntimeManager.CreateInstance(config.SirenSound);
+        }
+
+    }
+
+    private void Update()
+    {
+        PlaySfxOnSpawn();
+    }
+
+    private void PlaySfxOnSpawn()
+    {
+        if (!isActive)
+        {
+            if (hasSpawned)
+            {
+                sirenInstance.start();
+                AudioManager.Instance.PlaySfx(config.WhoopWhopSound);
+            }
+            isActive = true; // Evitar que se reproduzca repetidamente
+        }
     }
 
     public void SetSpawner(ObstacleSpawner spawner)
     {
         this.spawner = spawner;
+        hasSpawned = true;
     }
 
     private void HandleDeath()
@@ -54,6 +86,12 @@ public class EnemyController : MonoBehaviour
     {
         health.OnDead -= HandleDeath;
         health.OnTakeDamage -= DamageTrigger;
+
+        if (sirenInstance.isValid())
+        {
+            sirenInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            sirenInstance.release();
+        }
     }
 
 }

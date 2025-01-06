@@ -7,7 +7,7 @@ public class VolumeSlider : MonoBehaviour
     {
         MASTER,
         MUSIC,
-        AMBIENCE,
+        ENGINE,
         SFX
     }
 
@@ -19,9 +19,15 @@ public class VolumeSlider : MonoBehaviour
     private void Awake()
     {
         volumeSlider = this.GetComponentInChildren<Slider>();
+
+        if (volumeSlider == null)
+        {
+            Debug.LogError("Slider component not found on " + gameObject.name);
+            return;
+        }
     }
 
-    private void Update()
+    private void Start()
     {
         switch (volumeType)
         {
@@ -37,21 +43,23 @@ public class VolumeSlider : MonoBehaviour
             default:
                 Debug.LogWarning("Volume Type not supported: " + volumeType);
                 break;
+
         }
+        volumeSlider.onValueChanged.AddListener(OnSliderValueChanged);
     }
 
-    public void OnSliderValueChanged()
+    public void OnSliderValueChanged(float value)
     {
         switch (volumeType)
         {
             case VolumeType.MASTER:
-                AudioManager.Instance.masterVolume = volumeSlider.value;
+                AudioManager.Instance.SetMasterVolume(value);
                 break;
             case VolumeType.MUSIC:
-                AudioManager.Instance.musicVolume = volumeSlider.value;
+                AudioManager.Instance.SetMusicVolume(value);
                 break;
             case VolumeType.SFX:
-                AudioManager.Instance.sfxVolume = volumeSlider.value;
+                AudioManager.Instance.SetSFXVolume(value);
                 break;
             default:
                 Debug.LogWarning("Volume Type not supported: " + volumeType);

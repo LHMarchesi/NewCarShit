@@ -16,11 +16,13 @@ public class ObstacleSpawner : MonoBehaviour
     private Queue<GameObject> obstaclePool = new Queue<GameObject>();
     private float timeSinceLastSpawn = 0;
 
-
-    private void Start()
+    private void OnEnable()
     {
         InitializePool();
+        GameManager.OnLose += StopSpawning;
+        GameManager.OnWin += StopSpawning;
     }
+    
 
     void Update()
     {
@@ -66,7 +68,7 @@ public class ObstacleSpawner : MonoBehaviour
 
         if (obj.CompareTag("Enemy")) 
         {
-            EnemyController enemyController = obj.GetComponent<EnemyController>();
+            PoliceController enemyController = obj.GetComponent<PoliceController>();
             Debug.Log("spawn enemy");
             if (enemyController != null)
             {
@@ -100,5 +102,16 @@ public class ObstacleSpawner : MonoBehaviour
         int i = UnityEngine.Random.Range(0, sprites.Length);
         SpriteRenderer spriteRenderer = prefab.GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = sprites[i];
+    }
+
+    private void StopSpawning()
+    {
+        canSpawn = false;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnLose -= StopSpawning;
+        GameManager.OnWin -= StopSpawning;
     }
 }

@@ -27,18 +27,19 @@ public class AudioManager : MonoBehaviour
             instance = this;
         }
 
+        // Initialize Fmod buses
         masterBus = RuntimeManager.GetBus("Bus:/");
-      //  musicBus = RuntimeManager.GetBus("Bus:/Music");
-       // sfxBus = RuntimeManager.GetBus("Bus:/SFX");
+        musicBus = RuntimeManager.GetBus("Bus:/Music");
+        sfxBus = RuntimeManager.GetBus("Bus:/SFX");
 
-        
-        musicBus.setVolume(musicVolume);
-        sfxBus.setVolume(sfxVolume);
-    }
+        masterVolume = PlayerPrefs.GetFloat("MasterVolume", .7f);
+        musicVolume = PlayerPrefs.GetFloat("MusicVolume", .7f);
+        sfxVolume = PlayerPrefs.GetFloat("SFXVolume", .7f);
 
-    private void Update()
-    {
-        //masterBus.setVolume(masterVolume);
+        // Set volume from PlayerPrefs
+        SetMasterVolume(masterVolume);
+        SetMusicVolume(musicVolume);
+        SetSFXVolume(sfxVolume);
     }
 
     public void PlaySfx(EventReference sound)
@@ -46,4 +47,34 @@ public class AudioManager : MonoBehaviour
         RuntimeManager.PlayOneShot(sound);
     }
 
+    public void SetMasterVolume(float volume)
+    {
+        masterVolume = Mathf.Clamp01(volume);
+        masterBus.setVolume(masterVolume);
+        PlayerPrefs.SetFloat("MasterVolume", masterVolume);
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        musicVolume = Mathf.Clamp01(volume);
+        musicBus.setVolume(musicVolume);
+        PlayerPrefs.SetFloat("MusicVolume", musicVolume);
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        sfxVolume = Mathf.Clamp01(volume);
+        sfxBus.setVolume(sfxVolume);
+        PlayerPrefs.SetFloat("SFXVolume", sfxVolume);
+    }
+
+    public void PauseAllAudio(bool pause)
+    {
+        masterBus.setPaused(pause);
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.Save();
+    }
 }

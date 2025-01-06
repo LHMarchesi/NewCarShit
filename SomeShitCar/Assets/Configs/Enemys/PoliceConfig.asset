@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30b767404c6ec754a8033f672cedf7c0, type: 3}
-  m_Name: EnemyConfig
+  m_Script: {fileID: 11500000, guid: a3737808b56283e4f90ef129d344c14d, type: 3}
+  m_Name: PoliceConfig
   m_EditorClassIdentifier: 
-  Health: 500
-  CollisionDamage: 100
-  Armor: 100
+  Health: 600
+  CollisionDamage: 150
+  Armor: 0
   Speed: 3
   SpawnRatio: 25
   DamageSound:
@@ -31,3 +31,17 @@ MonoBehaviour:
       Data3: 1358394280
       Data4: 121084375
     Path: event:/Car/Car Explosion
+  SirenSound:
+    Guid:
+      Data1: -964579662
+      Data2: 1137814577
+      Data3: -946142053
+      Data4: 375615672
+    Path: event:/Enemys/Police/PoliceSiren
+  WhoopWhopSound:
+    Guid:
+      Data1: -876347661
+      Data2: 1329534885
+      Data3: 1021083068
+      Data4: -153537695
+    Path: event:/Enemys/Police/WhoopWhoop

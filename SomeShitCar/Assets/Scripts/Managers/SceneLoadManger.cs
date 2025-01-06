@@ -31,7 +31,6 @@ public class SceneLoadManger : MonoBehaviour
 
     public void LoadMainMenu()
     {
-
         StartCoroutine(LoadTransition("MainMenu"));
     }
 

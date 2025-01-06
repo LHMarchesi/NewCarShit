@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public abstract class BaseProjectile : MonoBehaviour
@@ -7,16 +8,27 @@ public abstract class BaseProjectile : MonoBehaviour
 
     protected Vector2 startPosition;
 
+    private bool hasSpawned;
+
     protected virtual void OnEnable()
     {
         startPosition = transform.position;
-        AudioManager.Instance.PlaySfx(projectileConfig.shootSound);
+        PlaySfxOnSpawn();
     }
 
     protected virtual void Update()
     {
         Move();
         ReturnToPoolOnDistance();
+    }
+
+    private void PlaySfxOnSpawn()
+    {
+        if (!hasSpawned) 
+        {
+            AudioManager.Instance.PlaySfx(projectileConfig.shootSound);
+            hasSpawned = true; 
+        }
     }
 
     protected virtual void Move()
