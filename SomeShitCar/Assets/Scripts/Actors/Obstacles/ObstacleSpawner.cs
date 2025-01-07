@@ -68,12 +68,11 @@ public class ObstacleSpawner : MonoBehaviour
 
         if (obj.CompareTag("Enemy")) 
         {
-            PoliceController enemyController = obj.GetComponent<PoliceController>();
-            Debug.Log("spawn enemy");
-            if (enemyController != null)
+            PoliceController policeController = obj.GetComponent<PoliceController>();
+            if (policeController != null)
             {
-                enemyController.SetSpawner(this); 
-                startingSpawnRate = enemyController.Config.SpawnRatio / DifficultyManager.Instance.GetEnemySpawnRateMultiplier();
+                policeController.SetSpawner(this); 
+                startingSpawnRate = policeController.Config.SpawnRatio / DifficultyManager.Instance.GetEnemySpawnRateMultiplier();
             }
         }
 

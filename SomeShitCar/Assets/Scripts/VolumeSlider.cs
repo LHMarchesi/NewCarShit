@@ -32,13 +32,13 @@ public class VolumeSlider : MonoBehaviour
         switch (volumeType)
         {
             case VolumeType.MASTER:
-                volumeSlider.value = AudioManager.Instance.masterVolume;
+                volumeSlider.value = AudioManager.Instance.MasterVolume;
                 break;
             case VolumeType.MUSIC:
-                volumeSlider.value = AudioManager.Instance.musicVolume;
+                volumeSlider.value = AudioManager.Instance.MusicVolume;
                 break;
             case VolumeType.SFX:
-                volumeSlider.value = AudioManager.Instance.sfxVolume;
+                volumeSlider.value = AudioManager.Instance.SfxVolume;
                 break;
             default:
                 Debug.LogWarning("Volume Type not supported: " + volumeType);

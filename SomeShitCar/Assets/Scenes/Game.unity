@@ -386,7 +386,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 163996543820443011, guid: 6ed3e3e151750b545a29edba97e41806, type: 3}
       propertyPath: m_Name
-      value: SceneLoadManager
+      value: SceneLoad_Manager
       objectReference: {fileID: 0}
     - target: {fileID: 2515911255413140803, guid: 6ed3e3e151750b545a29edba97e41806, type: 3}
       propertyPath: m_LocalPosition.x
@@ -452,7 +452,7 @@ GameObject:
   - component: {fileID: 113275325}
   - component: {fileID: 113275324}
   m_Layer: 0
-  m_Name: 'LampObstacleSpawner '
+  m_Name: 'Obstacle_Lamp_Spawner '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -545,6 +545,11 @@ MonoBehaviour:
   - Master
   CollisionTag: 
   PreloadSamples: 0
+--- !u!1 &192547215 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2745139718063851667, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
+  m_PrefabInstance: {fileID: 1162861793638199803}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &204533025
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,7 +640,7 @@ GameObject:
   - component: {fileID: 214483334}
   - component: {fileID: 214483333}
   m_Layer: 0
-  m_Name: CarObstacleSpawner
+  m_Name: 'Obstacle_Car_Spawner '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -743,7 +748,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.89997864, y: 0}
+  m_AnchoredPosition: {x: 0.8999939, y: 1.6999998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &250470604
@@ -766,7 +771,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1646685876, guid: 3639acfc228afb743aaacfa259a99bf0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7d8e899817e5a794f80c57c552327383, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -929,7 +934,7 @@ GameObject:
   - component: {fileID: 281287544}
   - component: {fileID: 281287543}
   m_Layer: 0
-  m_Name: PopUpManager
+  m_Name: PopUps_Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2652,7 +2657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nonRigidbodyVelocity: 0
-  attenuationObject: {fileID: 747743065}
+  attenuationObject: {fileID: 192547215}
 --- !u!1 &584225353
 GameObject:
   m_ObjectHideFlags: 0
@@ -2746,7 +2751,7 @@ GameObject:
   - component: {fileID: 621110745}
   - component: {fileID: 621110744}
   m_Layer: 0
-  m_Name: DificulttyManager
+  m_Name: Dificultty_Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3157,7 +3162,7 @@ GameObject:
   - component: {fileID: 658173275}
   - component: {fileID: 658173276}
   m_Layer: 0
-  m_Name: RoadManager
+  m_Name: Road_Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3490,7 +3495,7 @@ GameObject:
   - component: {fileID: 724751408}
   - component: {fileID: 724751407}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Game_Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3795,11 +3800,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 214483334}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &747743065 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2745139718063851667, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
-  m_PrefabInstance: {fileID: 4420549740971039086}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &753454057
 GameObject:
   m_ObjectHideFlags: 0
@@ -3851,7 +3851,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -4065,7 +4065,7 @@ GameObject:
   - component: {fileID: 801890096}
   - component: {fileID: 801890095}
   m_Layer: 0
-  m_Name: EnemySpawner
+  m_Name: Enemy_Police_Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4903,7 +4903,7 @@ GameObject:
   - component: {fileID: 1003700163}
   - component: {fileID: 1003700164}
   m_Layer: 0
-  m_Name: ScrenManager
+  m_Name: Scren_Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5156,7 +5156,7 @@ GameObject:
   - component: {fileID: 1114188284}
   - component: {fileID: 1114188283}
   m_Layer: 0
-  m_Name: LevelManager
+  m_Name: Level_Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6732,12 +6732,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 2340}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -6983,7 +6983,7 @@ GameObject:
   - component: {fileID: 1563811435}
   - component: {fileID: 1563811434}
   m_Layer: 0
-  m_Name: Pause
+  m_Name: Pause_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7717,7 +7717,7 @@ GameObject:
   - component: {fileID: 1743668241}
   - component: {fileID: 1743668242}
   m_Layer: 0
-  m_Name: AudioManager
+  m_Name: Audio_Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8897,7 +8897,7 @@ GameObject:
   - component: {fileID: 2060404952}
   - component: {fileID: 2060404956}
   m_Layer: 5
-  m_Name: UICanvas
+  m_Name: UI_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8932,12 +8932,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1080, y: 2340}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -9076,7 +9076,7 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &4420549740971039086
+--- !u!1001 &1162861793638199803
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9086,11 +9086,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 15113031301629241, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.91
+      value: -1.83
       objectReference: {fileID: 0}
     - target: {fileID: 15113031301629241, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.57
+      value: -2.647
       objectReference: {fileID: 0}
     - target: {fileID: 15113031301629241, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9128,10 +9128,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3304971917512432842, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 7d8e899817e5a794f80c57c552327383, type: 3}
     - target: {fileID: 3748184862445003573, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -9140,46 +9136,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5145256656251008493, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
-      propertyPath: onHitSound.Path
-      value: event:/Hits/OnPlayerHit
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145256656251008493, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
-      propertyPath: onDeadSound.Path
-      value: event:/Car/Car Explosion
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145256656251008493, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
-      propertyPath: onHitSound.Guid.Data1
-      value: 226278004
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145256656251008493, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
-      propertyPath: onHitSound.Guid.Data2
-      value: 1312507748
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145256656251008493, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
-      propertyPath: onHitSound.Guid.Data3
-      value: 955500170
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145256656251008493, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
-      propertyPath: onHitSound.Guid.Data4
-      value: 1026185942
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145256656251008493, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
-      propertyPath: onDeadSound.Guid.Data1
-      value: 1434734612
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145256656251008493, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
-      propertyPath: onDeadSound.Guid.Data2
-      value: 1229487471
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145256656251008493, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
-      propertyPath: onDeadSound.Guid.Data3
-      value: 1358394280
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145256656251008493, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
-      propertyPath: onDeadSound.Guid.Data4
-      value: 121084375
-      objectReference: {fileID: 0}
+    - target: {fileID: 7091349156979852869, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
+      propertyPath: touch
+      value: 
+      objectReference: {fileID: 1035070982}
+    - target: {fileID: 7091349156979852869, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
+      propertyPath: treshold
+      value: 
+      objectReference: {fileID: 893338753}
     - target: {fileID: 7091349156979852869, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
       propertyPath: outerCircle
       value: 
@@ -9199,7 +9163,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 53648036}
-  - {fileID: 953748217}
   - {fileID: 1716976078}
   - {fileID: 1743668241}
   - {fileID: 281287544}
@@ -9217,6 +9180,7 @@ SceneRoots:
   - {fileID: 1563811435}
   - {fileID: 2060404955}
   - {fileID: 584225354}
-  - {fileID: 4420549740971039086}
+  - {fileID: 953748217}
   - {fileID: 1257383330}
   - {fileID: 1401773942}
+  - {fileID: 1162861793638199803}

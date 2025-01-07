@@ -5,8 +5,8 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] Vector2 speed;
     [SerializeField] private float constantAceleration;
-    [SerializeField] public SpriteRenderer joystickCircle;
-    [SerializeField] public SpriteRenderer outerCircle;
+    [SerializeField] public SpriteRenderer touch;
+    [SerializeField] public SpriteRenderer treshold;
 
     Rigidbody2D rb;
 
@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        pointA = joystickCircle.transform.position;
+        pointA = touch.transform.position;
     }
 
     void moveCharacter(Vector2 direction)
@@ -37,22 +37,22 @@ public class Movement : MonoBehaviour
         {
             touchStart = true;
 
-            Color color = joystickCircle.color; // set the opacity
+            Color color = touch.color; // set the opacity
             color.a = 1f;
-            joystickCircle.color = color;
-            outerCircle.color = color;
+            touch.color = color;
+            treshold.color = color;
 
             pointB = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.z));
         }
         else
         {
             touchStart = false;
-            joystickCircle.transform.position = pointA;
+            touch.transform.position = pointA;
 
-            Color color = joystickCircle.color; // set the opacity of the cursor
+            Color color = touch.color; // set the opacity of the cursor
             color.a = .55f;
-            joystickCircle.color = color;
-            outerCircle.color = color;
+            touch.color = color;
+            treshold.color = color;
         }
     }
 
@@ -64,7 +64,7 @@ public class Movement : MonoBehaviour
             Vector2 direction = Vector2.ClampMagnitude(offset, 1.0f);
             moveCharacter(direction);
 
-            joystickCircle.transform.position = new Vector2(pointA.x + direction.x, pointA.y + direction.y);
+            touch.transform.position = new Vector2(pointA.x + direction.x, pointA.y + direction.y);
         }
         else
         {

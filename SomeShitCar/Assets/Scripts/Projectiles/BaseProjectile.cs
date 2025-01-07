@@ -13,13 +13,13 @@ public abstract class BaseProjectile : MonoBehaviour
     protected virtual void OnEnable()
     {
         startPosition = transform.position;
-        PlaySfxOnSpawn();
     }
 
     protected virtual void Update()
     {
         Move();
         ReturnToPoolOnDistance();
+        PlaySfxOnSpawn();
     }
 
     private void PlaySfxOnSpawn()
