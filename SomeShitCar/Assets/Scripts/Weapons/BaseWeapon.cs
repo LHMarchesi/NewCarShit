@@ -60,6 +60,4 @@ public class BaseWeapon : Weapon
         obj.transform.rotation = Quaternion.identity;
         bulletPool.Enqueue(obj);
     }
-
-
 }
