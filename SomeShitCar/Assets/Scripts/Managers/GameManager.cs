@@ -1,12 +1,13 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
     public static GameManager Instance
     { get { return instance; } }
+
+    public GameStates CurrentState { get => currentState; set => currentState = value; }
 
     public enum GameStates { MainMenu, Game, Pause, Lose, Win }
 
@@ -27,30 +28,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     public void SetGameState(GameStates newState)
     {
         currentState = newState;
         HandleStateChange();
-    }
-    public void SetMenuState()
-    {
-        SceneLoadManger.Instance.LoadSceneByName("MainMenu");
-        SetGameState(GameStates.MainMenu);
-    }
-
-    public void Quit()
-    {
-        Debug.Log("Quit");
-        Application.Quit();
-    }
-
-    public void Retry()
-    {
-        Time.timeScale = 1f;
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
-        SetGameState(GameStates.Game);
     }
 
     private void HandleStateChange()
@@ -70,7 +51,6 @@ public class GameManager : MonoBehaviour
                 OnLose?.Invoke();
                 break;
             case GameStates.Win:
-                AudioManager.Instance.PauseAllAudio(true);
                 OnWin?.Invoke();
                 break;
             default:

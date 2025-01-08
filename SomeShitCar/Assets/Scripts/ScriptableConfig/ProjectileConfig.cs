@@ -7,6 +7,4 @@ public class ProjectileConfig : ScriptableObject
     public float Damage;
     public float speed;
     public float lifeTime;
-    public EventReference shootSound;
- //   public EventReference impactSound;
 }

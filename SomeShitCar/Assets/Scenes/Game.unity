@@ -3513,7 +3513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1765f93c27ef814f906e5dad99a7122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
+  currentState: 1
 --- !u!4 &724751408
 Transform:
   m_ObjectHideFlags: 0
@@ -7753,9 +7753,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0569163c0ae9f9648a49ae6e3d82f931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterVolume: 1
-  musicVolume: 1
-  sfxVolume: 1
 --- !u!1 &1747778616
 GameObject:
   m_ObjectHideFlags: 0
@@ -9136,10 +9133,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5145256656251008493, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
+      propertyPath: startingHealth
+      value: 750
+      objectReference: {fileID: 0}
     - target: {fileID: 7091349156979852869, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
       propertyPath: touch
       value: 
       objectReference: {fileID: 1035070982}
+    - target: {fileID: 7091349156979852869, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
+      propertyPath: speed.y
+      value: 1.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7091349156979852869, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
       propertyPath: treshold
       value: 
@@ -9152,6 +9157,10 @@ PrefabInstance:
       propertyPath: joystickCircle
       value: 
       objectReference: {fileID: 1035070982}
+    - target: {fileID: 7091349156979852869, guid: 5991523dada678c42a92f5ab8bc9a889, type: 3}
+      propertyPath: constantAceleration
+      value: 0.15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

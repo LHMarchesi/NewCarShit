@@ -17,3 +17,10 @@ MonoBehaviour:
   timeBetweenBullets: 0.3
   capacity: 15
   visionRange: 4
+  shootSound:
+    Guid:
+      Data1: -729731347
+      Data2: 1329246359
+      Data3: -621679217
+      Data4: 337969027
+    Path: event:/Weapons/Uzi

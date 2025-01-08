@@ -1,6 +1,7 @@
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
+using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
@@ -75,6 +76,37 @@ public class AudioManager : MonoBehaviour
     public void PauseAllAudio(bool pause)
     {
         masterBus.setPaused(pause);
+    }
+
+    public IEnumerator FadeOut(float duration)
+    {
+        float startVolume;
+        masterBus.getVolume(out startVolume);
+
+        float elapsedTime = 0;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float newVolume = Mathf.Lerp(startVolume, 0, elapsedTime / duration);
+            masterBus.setVolume(newVolume);
+            yield return null;
+        }
+
+        masterBus.setVolume(0);
+    }
+
+    public IEnumerator FadeIn(float duration)
+    {
+        float elapsedTime = 0;
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float newVolume = Mathf.Lerp(0, PlayerPrefs.GetFloat("MasterVolume", .7f), elapsedTime / duration);
+            masterBus.setVolume(newVolume);
+            yield return null;
+        }
+
+        masterBus.setVolume(PlayerPrefs.GetFloat("MasterVolume", .7f));
     }
 
     private void OnApplicationQuit()

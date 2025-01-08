@@ -17,3 +17,10 @@ MonoBehaviour:
   timeBetweenBullets: 1
   capacity: 8
   visionRange: 5
+  shootSound:
+    Guid:
+      Data1: 1284693004
+      Data2: 1272809791
+      Data3: -1112606022
+      Data4: -1500219306
+    Path: event:/Weapons/Pistol

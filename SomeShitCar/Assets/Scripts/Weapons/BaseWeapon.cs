@@ -1,11 +1,9 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BaseWeapon : Weapon
 {
     private Queue<GameObject> bulletPool = new Queue<GameObject>();
-
     protected override void Start()
     {
         base.Start();
@@ -27,6 +25,7 @@ public class BaseWeapon : Weapon
             }
             currentAmmo--;
             timeSinceLastShot = 0;
+            AudioManager.Instance.PlaySfx(weaponConfig.shootSound);
         }
         else if (currentAmmo <= 0)
         {

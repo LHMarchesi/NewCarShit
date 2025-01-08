@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,28 +28,41 @@ public class SceneLoadManger : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
     }
 
+    public IEnumerator TransitionToScene(string sceneName, GameManager.GameStates newState)
+    {
+        Time.timeScale = 1.0f;
+
+        // Fade in / out master audio
+        yield return StartCoroutine(AudioManager.Instance.FadeOut(1.0f));
+
+        AudioManager.Instance.PauseAllAudio(true);
+        animator.SetTrigger("StartTransition");
+
+        SceneManager.LoadScene(sceneName);
+        GameManager.Instance.SetGameState(newState);
+
+        yield return StartCoroutine(AudioManager.Instance.FadeIn(1.0f));
+    }
+
     public void LoadMainMenu()
     {
-        StartCoroutine(LoadTransition("MainMenu"));
+        StartCoroutine(TransitionToScene("MainMenu", GameManager.GameStates.MainMenu));
     }
 
     public void LoadGame()
     {
-        StartCoroutine(LoadTransition("Game"));
+        StartCoroutine(TransitionToScene("Game", GameManager.GameStates.Game));
     }
 
-    public void LoadSceneByName(string sceneName)
+    public void Retry()
     {
-        StartCoroutine(LoadTransition(sceneName));
+        Scene currentScene = SceneManager.GetActiveScene();
+        StartCoroutine(TransitionToScene(currentScene.name, GameManager.GameStates.Game));
     }
 
-    private IEnumerator LoadTransition(string sceneName)
+    public void Quit()
     {
-        animator.SetTrigger("StartTransition");
-        Time.timeScale = 1.0f;
-        yield return new WaitForSeconds(transitionTime);
-
-        SceneManager.LoadScene(sceneName);
+        Debug.Log("Quit");
+        Application.Quit();
     }
-
 }

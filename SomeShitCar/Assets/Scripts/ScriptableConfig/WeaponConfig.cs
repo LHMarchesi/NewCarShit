@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "WeaponConfig", menuName = "Configs/Weapon")]
@@ -9,4 +10,5 @@ public class WeaponConfig : ScriptableObject
     public float timeBetweenBullets;
     public int capacity;
     public float visionRange;
+    public EventReference shootSound;
 }

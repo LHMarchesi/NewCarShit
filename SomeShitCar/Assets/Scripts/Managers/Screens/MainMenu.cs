@@ -8,6 +8,6 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         startButton.onClick.AddListener(SceneLoadManger.Instance.LoadGame);
-        quitButton.onClick.AddListener(GameManager.Instance.Quit);
+        quitButton.onClick.AddListener(SceneLoadManger.Instance.Quit);
     }
 }

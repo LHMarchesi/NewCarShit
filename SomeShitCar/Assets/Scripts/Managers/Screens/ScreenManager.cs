@@ -23,6 +23,7 @@ public class ScreenManager : MonoBehaviour
 
     private void toggleWinCanvas()
     {
+        StartCoroutine(AudioManager.Instance.FadeOut(1.0f));
         winCanvas.SetActive(true);  // Show Win Canvas
 
         Button nextButton = winCanvas.transform.Find("NextButton").GetComponent<Button>();
@@ -33,9 +34,9 @@ public class ScreenManager : MonoBehaviour
         nextButton.onClick.RemoveAllListeners();
         quitButton.onClick.RemoveAllListeners();
 
-        nextButton.onClick.AddListener(GameManager.Instance.Retry);
+        nextButton.onClick.AddListener(SceneLoadManger.Instance.Retry);
         mainMenuButton.onClick.AddListener(SceneLoadManger.Instance.LoadMainMenu);
-        quitButton.onClick.AddListener(GameManager.Instance.Quit);
+        quitButton.onClick.AddListener(SceneLoadManger.Instance.Quit);
 
         Time.timeScale = 0f;
     }
@@ -47,6 +48,7 @@ public class ScreenManager : MonoBehaviour
 
     private IEnumerator ShowLoseCanvasWithDelay(float delay)
     {
+        StartCoroutine(AudioManager.Instance.FadeOut(1.0f));
         yield return new WaitForSeconds(delay); 
 
         loseCanvas.SetActive(true); // Show Lose Canvas
@@ -59,11 +61,9 @@ public class ScreenManager : MonoBehaviour
         retryButton.onClick.RemoveAllListeners();
         quitButton.onClick.RemoveAllListeners();
 
-        retryButton.onClick.AddListener(GameManager.Instance.Retry);
-        mainMenuButton.onClick.AddListener(GoToMenu);
-        quitButton.onClick.AddListener(GameManager.Instance.Quit);
-
-        AudioManager.Instance.PauseAllAudio(true);
+        retryButton.onClick.AddListener(SceneLoadManger.Instance.Retry);
+        mainMenuButton.onClick.AddListener(SceneLoadManger.Instance.LoadMainMenu);
+        quitButton.onClick.AddListener(SceneLoadManger.Instance.Quit);
 
         Time.timeScale = 0f;
     }
@@ -74,9 +74,5 @@ public class ScreenManager : MonoBehaviour
         GameManager.OnLose -= toggleLoseCanvas;
     }
 
-    private void GoToMenu()
-    {
-        GameManager.Instance.SetGameState(GameManager.GameStates.MainMenu);
-        SceneLoadManger.Instance.LoadMainMenu();
-    }
+   
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public abstract class Weapon : MonoBehaviour
 {
-    [SerializeField] private WeaponConfig weaponConfig;
+    [SerializeField] protected WeaponConfig weaponConfig;
 
     [SerializeField] protected string targetTag;
     [SerializeField] protected bool drawGizmos;
@@ -23,7 +23,7 @@ public abstract class Weapon : MonoBehaviour
 
     protected virtual void Start()
     {
-        bulletPrefab = weaponConfig.bulletPrefab;
+        bulletPrefab = weaponConfig.bulletPrefab;  // Assings values from config    
         reloadTime = weaponConfig.reloadTime;
         timeBetweenBullets = weaponConfig.timeBetweenBullets;
         capacity = weaponConfig.capacity;
