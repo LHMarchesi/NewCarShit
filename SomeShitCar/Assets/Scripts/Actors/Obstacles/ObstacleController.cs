@@ -12,23 +12,22 @@ public class ObstacleController : MonoBehaviour
         this.spawner = spawner;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         HandleCollision(collision.gameObject);
     }
 
-    private void HandleCollision(GameObject collisionObject)
+    private void HandleCollision(GameObject other)
     {
-        Health objHealth = collisionObject.GetComponent<Health>();
-        if (objHealth != null)
+        IDamagable iDamagable = other.gameObject.GetComponent<IDamagable>();
+        if (iDamagable != null)
         {
-            objHealth?.TakeDamage(config.Damage);
+            iDamagable.Damage(config.Damage);
             AudioManager.Instance.PlaySfx(config.CrashSound);
-
         }
-        else if (collisionObject.CompareTag("DeSpawnTrigger"))
-        {
-            spawner.ReturnToPool(this.gameObject);
-        }
+    }
+    public void HandleDespawn()
+    {
+        spawner.ReturnToPool(gameObject);
     }
 }

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Health : MonoBehaviour
+public class Health : MonoBehaviour, IDamagable
 {
     private float startingHealth;
     public event Action OnDead;
@@ -19,18 +19,6 @@ public class Health : MonoBehaviour
         if (currentHealth > startingHealth)
             currentHealth = startingHealth;
     }
-
-    public void TakeDamage(float damage)
-    {
-        OnTakeDamage?.Invoke();
-        currentHealth -= damage;
-        healthSlider.value = currentHealth;
-
-        if (currentHealth <= 0)
-        {
-            OnDead?.Invoke();
-        }
-    }
     public float GetCurrentHealth()
     {
         return currentHealth;
@@ -42,6 +30,18 @@ public class Health : MonoBehaviour
         healthSlider.maxValue = hp;
         healthSlider.value = hp;
         currentHealth = hp;
+    }
+
+    public void Damage(float damageAmount)
+    {
+        OnTakeDamage?.Invoke();
+        currentHealth -= damageAmount;
+        healthSlider.value = currentHealth;
+
+        if (currentHealth <= 0)
+        {
+            OnDead?.Invoke();
+        }
     }
 }
 
