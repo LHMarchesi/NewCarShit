@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PoliceConfig
   m_EditorClassIdentifier: 
   Health: 650
-  CollisionDamage: 150
+  CollisionDamage: 100
   Armor: 0
   Speed: 3
   SpawnRatio: 28

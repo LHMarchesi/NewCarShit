@@ -24,7 +24,9 @@ public abstract class BaseProjectile : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.GetComponent<Health>()?.TakeDamage(projectileConfig.Damage);
+        IDamagable iDamagable = collision.gameObject.GetComponent<IDamagable>();
+        if (iDamagable != null)
+            iDamagable.Damage(projectileConfig.Damage);
 
         BaseWeapon weapon = GetComponentInParent<BaseWeapon>();
         weapon.ReturnToPool(gameObject);

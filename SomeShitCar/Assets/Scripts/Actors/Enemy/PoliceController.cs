@@ -26,11 +26,8 @@ public class PoliceController : MonoBehaviour
         health.OnTakeDamage += DamageTrigger;
         health.SetStartingHeal(config.Health);
 
-        // Crear la instancia del sonido de la sirena
-        if (!string.IsNullOrEmpty(config.SirenSound.Path))
-        {
-            sirenInstance = RuntimeManager.CreateInstance(config.SirenSound);
-        }
+
+        sirenInstance = RuntimeManager.CreateInstance(config.SirenSound);
 
     }
 
@@ -74,12 +71,9 @@ public class PoliceController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Health objHealth = collision.gameObject.GetComponent<Health>();
-        if (objHealth != null)
-        {
-            objHealth?.TakeDamage(config.CollisionDamage);
-
-        }
+        IDamagable iDamagable = collision.gameObject.GetComponent<IDamagable>();
+        if (iDamagable != null)
+            iDamagable.Damage(config.CollisionDamage);
     }
 
     void OnDisable()
